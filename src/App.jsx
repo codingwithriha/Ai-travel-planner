@@ -1,14 +1,16 @@
 
 import './App.css'
 import { Button } from './components/ui/button'
+import Header from './components/ui/custom/Header'
+import Hero from './components/ui/custom/Hero'
 
 function App() {
   
 
   return (
     <>
-      <h1 className='text-3xl font-bold underline'>This is tailwind css</h1>
-      <Button>here it is</Button>
+      {/* Hero-section */}
+      <Hero />
     </>
   )
 }
