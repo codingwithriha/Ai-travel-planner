@@ -3,14 +3,16 @@ import { Button } from '../button'
 
 function Header() {
   return (
-    <>
-    <div className='p-2 shadow-sm flex justify-between items-center'>
-        <img src='/logo.svg' />
-    </div>
-    <div>
-        <Button>Sign In</Button>
-    </div>
-    </>
+    <header className="flex justify-between items-center px-6 py-4 shadow-sm bg-white">
+      <div className="flex items-center ">
+        <img src="/logo.svg" alt="Logo" className="w-8 h-8" />
+      </div>
+      <div>
+        <Button>
+          Sign In
+        </Button>
+      </div>
+    </header>
   )
 }
 
