@@ -14,11 +14,16 @@ import {
 import { FcGoogle} from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { doc, setDoc } from "firebase/firestore";
+import { app, db } from '@/service/firebaseConfig';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 
 function CreateTrip() {
   const [place, setPlace] = useState();
   const [formData, setFormData] = useState([]);
   const [openDialog, setOpenDialog]=useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   const login = useGoogleLogin({
@@ -52,6 +57,8 @@ function CreateTrip() {
       return;
     }
 
+    setLoading(true)
+
      const FINAL_PROMPT = AI_PROMPT
       .replace('{location}', formData?.location?.label)
       .replace('{totalDays}', formData?.noOfDays)
@@ -66,6 +73,21 @@ function CreateTrip() {
     console.log(result?.response?.text());
     setLoading(false)
     SaveAiTrip(result?.response?.text())
+  }
+
+  const SaveAiTrip = async (TripData) => {
+    setLoading(true)
+    const user = JSON.parse(localStorage.getItem('user'))
+    const docId = Date.now().toString();
+    // Add a new document in collection "AITrips"
+    await setDoc(doc(db, "AITrips", docId), {
+      userSelection: formData,
+      tripData: JSON.parse(TripData),
+      userEmail: user?.email,
+      id: docId
+    });
+    setLoading(false)
+    navigate('/view-trip/' + docId)
   }
 
   const GetUserProfile = (tokenInfo) => {
@@ -153,7 +175,9 @@ function CreateTrip() {
       </div>
 
       <div className="my-10 flex justify-end">
-        <Button onClick={OnGenerateTrip}>Generate trip</Button>
+        <Button disabled={loading} onClick={OnGenerateTrip}>
+          {loading ? <AiOutlineLoading3Quarters className="h-7 w-7 animate-spin" /> : 'Generate trip'}
+          </Button>
       </div>
       <Dialog open={openDialog}>
   
