@@ -1,8 +1,6 @@
 
 import './App.css'
-import { Button } from './components/ui/button'
-import Header from './components/ui/custom/Header'
-import Hero from './components/ui/custom/Hero'
+import Hero from './components/custom/Hero'
 
 function App() {
   
@@ -10,7 +8,7 @@ function App() {
   return (
     <>
       {/* Hero-section */}
-      <Hero />
+      <Hero/>
     </>
   )
 }

@@ -3,9 +3,12 @@ export default{
   content: [
     // "./index.html",
     // "./src/**/*.{js,ts,jsx,tsx}",
+    // "./components/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
 }
