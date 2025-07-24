@@ -13,6 +13,7 @@
     "@google/genai": "^1.10.0",
     "@google/generative-ai": "^0.24.1",
     "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-popover": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-oauth/google": "^0.12.2",
     "@tailwindcss/vite": "^4.1.11",
