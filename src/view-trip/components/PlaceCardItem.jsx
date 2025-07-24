@@ -13,7 +13,7 @@ function PlaceCardItem({place}) {
 
   const GetPlacePhoto = async () => {
       const data = {
-          textQuery: place?.place
+          textQuery: place?.placeName
       }
       const result = await GetPlaceDetails(data).then(resp => {
           console.log(resp.data.places[0].photos[3].name)
