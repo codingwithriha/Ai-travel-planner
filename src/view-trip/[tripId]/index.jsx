@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from "firebase/firestore";
 import { toast } from 'sonner';
 import InfoSection from '../components/InfoSection';
-// import Hotels from '../components/Hotels';
-// import PlacesToVisit from '../components/PlacesToVisit';
+import Hotels from '../components/Hotels';
+import PlacesToVisit from '../components/PlacesToVisit';
 // import Footer from '../components/Footer';
 
 function Viewtrip() {
@@ -39,10 +39,10 @@ function Viewtrip() {
             <InfoSection trip={trip} />
 
             {/* Recommended Hotels */}
-            {/* <Hotels trip={trip} /> */}
+            <Hotels trip={trip} />
 
             {/* Daily Plan */}
-            {/* <PlacesToVisit trip={trip} /> */}
+            <PlacesToVisit trip={trip} />
 
             {/* Footer */}
             {/* <Footer trip={trip} /> */}
